@@ -1,5 +1,6 @@
 from pycu.components.bit import Bit
 from pycu.components.adder import ripple_carry_adder, incrementer
+from pycu.components.bitwise_gates import bitwise_not
 
 
 def ripple_carry_subtractor(

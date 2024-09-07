@@ -1,49 +1,70 @@
-import unittest
+import pytest
 from pycu.components.bit import Bit
 
 
-class TestBit(unittest.TestCase):
-
-    def test_bit(self):
-        bit = Bit(False)
-        self.assertEqual(bit.value, False)
-        bit = Bit(True)
-        self.assertEqual(bit.value, True)
-
-    def test_not(self):
-        bit = Bit(False)
-        self.assertEqual(~bit, Bit(True))
-        bit = Bit(True)
-        self.assertEqual(~bit, Bit(False))
-
-    def test_and(self):
-        bit1 = Bit(False)
-        bit2 = Bit(False)
-        self.assertEqual(bit1 and bit2, Bit(False))
-        bit1 = Bit(False)
-        bit2 = Bit(True)
-        self.assertEqual(bit1 and bit2, Bit(False))
-        bit1 = Bit(True)
-        bit2 = Bit(False)
-        self.assertEqual(bit1 and bit2, Bit(False))
-        bit1 = Bit(True)
-        bit2 = Bit(True)
-        self.assertEqual(bit1 and bit2, Bit(True))
-
-    def test_or(self):
-        bit1 = Bit(False)
-        bit2 = Bit(False)
-        self.assertEqual(bit1 or bit2, Bit(False))
-        bit1 = Bit(False)
-        bit2 = Bit(True)
-        self.assertEqual(bit1 or bit2, Bit(True))
-        bit1 = Bit(True)
-        bit2 = Bit(False)
-        self.assertEqual(bit1 or bit2, Bit(True))
-        bit1 = Bit(True)
-        bit2 = Bit(True)
-        self.assertEqual(bit1 or bit2, Bit(True))
+def test_bit_false():
+    bit = Bit(False)
+    assert bit.value == False
 
 
-if __name__ == "__main__":
-    unittest.main()
+def test_bit_true():
+    bit = Bit(True)
+    assert bit.value == True
+
+
+def test_not_false():
+    bit = Bit(False)
+    assert ~bit == Bit(True)
+
+
+def test_not_true():
+    bit = Bit(True)
+    assert ~bit == Bit(False)
+
+
+def test_and_false_false():
+    bit1 = Bit(False)
+    bit2 = Bit(False)
+    assert (bit1 and bit2) == Bit(False)
+
+
+def test_and_false_true():
+    bit1 = Bit(False)
+    bit2 = Bit(True)
+    assert (bit1 and bit2) == Bit(False)
+
+
+def test_and_true_false():
+    bit1 = Bit(True)
+    bit2 = Bit(False)
+    assert bit1 and bit2 == Bit(False)
+
+
+def test_and_true_true():
+    bit1 = Bit(True)
+    bit2 = Bit(True)
+    assert bit1 and bit2 == Bit(True)
+
+
+def test_or_false_false():
+    bit1 = Bit(False)
+    bit2 = Bit(False)
+    assert bit1 or bit2 == Bit(False)
+
+
+def test_or_false_true():
+    bit1 = Bit(False)
+    bit2 = Bit(True)
+    assert bit1 or bit2 == Bit(True)
+
+
+def test_or_true_false():
+    bit1 = Bit(True)
+    bit2 = Bit(False)
+    assert bit1 or bit2 == Bit(True)
+
+
+def test_or_true_true():
+    bit1 = Bit(True)
+    bit2 = Bit(True)
+    assert bit1 or bit2 == Bit(True)
