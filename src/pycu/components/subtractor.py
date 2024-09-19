@@ -23,7 +23,7 @@ def ripple_carry_subtractor(
         raise ValueError("Inputs must be the same length")
 
     # Get the two's complement of b
-    b_complement, _, _, _, _ = incrementer([~bit for bit in b])
+    b_complement, _, _, _, _ = incrementer(bitwise_not(b))
 
     # Perform the addition
     result, borrow_out, underflow, zero, negative = ripple_carry_adder(a, b_complement)
